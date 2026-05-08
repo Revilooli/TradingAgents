@@ -8,9 +8,10 @@ load_dotenv()
 
 # Create a custom config
 config = DEFAULT_CONFIG.copy()
-config["deep_think_llm"] = "gpt-5.4-mini"  # Use a different model
-config["quick_think_llm"] = "gpt-5.4-mini"  # Use a different model
-config["max_debate_rounds"] = 1  # Increase debate rounds
+config["llm_provider"] = "anthropic"
+config["deep_think_llm"] = "claude-sonnet-4-6"
+config["quick_think_llm"] = "claude-haiku-4-5-20251001"
+config["max_debate_rounds"] = 1
 
 # Configure data vendors (default uses yfinance, no extra API keys needed)
 config["data_vendors"] = {
@@ -24,7 +25,7 @@ config["data_vendors"] = {
 ta = TradingAgentsGraph(debug=True, config=config)
 
 # forward propagate
-_, decision = ta.propagate("NVDA", "2024-05-10")
+_, decision = ta.propagate("RCAT", "2026-05-08")
 print(decision)
 
 # Memorize mistakes and reflect

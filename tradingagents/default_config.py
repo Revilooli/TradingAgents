@@ -12,9 +12,13 @@ DEFAULT_CONFIG = {
     # Pending entries are never pruned. None disables rotation entirely.
     "memory_log_max_entries": None,
     # LLM settings
-    "llm_provider": "openai",
-    "deep_think_llm": "gpt-5.4",
-    "quick_think_llm": "gpt-5.4-mini",
+    "llm_provider": "anthropic",
+    "deep_think_llm": "claude-haiku-4-5-20251001",
+    "quick_think_llm": "claude-haiku-4-5-20251001",
+    # Per-call response cap (None disables). Forwarded to providers that
+    # accept max_tokens (currently Anthropic). Caps verbose chain-of-thought
+    # in analyst/debate turns; raise for deep_think if you need longer reports.
+    "max_tokens": 500,
     # When None, each provider's client falls back to its own default endpoint
     # (api.openai.com for OpenAI, generativelanguage.googleapis.com for Gemini, ...).
     # The CLI overrides this per provider when the user picks one. Keeping a

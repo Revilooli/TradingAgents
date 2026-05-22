@@ -79,6 +79,12 @@ class TradingAgentsGraph:
         # Initialize LLMs with provider-specific thinking configuration
         llm_kwargs = self._get_provider_kwargs()
 
+        # Forward max_tokens cap to providers that accept it (e.g. Anthropic).
+        # Clients silently drop kwargs they don't recognize.
+        max_tokens = self.config.get("max_tokens")
+        if max_tokens is not None:
+            llm_kwargs["max_tokens"] = max_tokens
+
         # Add callbacks to kwargs if provided (passed to LLM constructor)
         if self.callbacks:
             llm_kwargs["callbacks"] = self.callbacks

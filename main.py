@@ -6,12 +6,13 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# Create a custom config
+# Create a custom config — Haiku-only for cost; uniform 500-token cap per call.
 config = DEFAULT_CONFIG.copy()
 config["llm_provider"] = "anthropic"
-config["deep_think_llm"] = "claude-sonnet-4-6"
+config["deep_think_llm"] = "claude-haiku-4-5-20251001"
 config["quick_think_llm"] = "claude-haiku-4-5-20251001"
 config["max_debate_rounds"] = 1
+config["max_tokens"] = 500
 
 # Configure data vendors (default uses yfinance, no extra API keys needed)
 config["data_vendors"] = {

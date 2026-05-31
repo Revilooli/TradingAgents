@@ -36,6 +36,8 @@ COL_EINSTAND = 3
 COL_PREIS = 7
 COL_WAEHRUNG = 8
 COL_GV_PCT = 10
+COL_TOTALWERT_CHF = 11
+COL_POSITION_PCT = 12
 
 
 def parse_positions_xls(path: Path) -> list[dict]:
@@ -82,6 +84,8 @@ def parse_positions_xls(path: Path) -> list[dict]:
             "preis": row[COL_PREIS],
             "waehrung": str(row[COL_WAEHRUNG]).strip(),
             "gv_pct_chf": row[COL_GV_PCT],
+            "totalwert_chf": row[COL_TOTALWERT_CHF],
+            "position_pct": row[COL_POSITION_PCT],
         })
 
     return positions

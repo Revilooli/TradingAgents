@@ -1,5 +1,6 @@
 # Personal portfolio data — never commit
 positions.xls
+reports/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
